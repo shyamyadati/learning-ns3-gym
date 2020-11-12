@@ -2,7 +2,7 @@
 
 ## References
 
-# Doker Image
+# Docker Image
 ```
 docker pull slyad/ns3-gym
 ```
