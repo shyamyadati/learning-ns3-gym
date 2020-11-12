@@ -3,6 +3,11 @@
 ## References
 
 # Doker Image
+```
+docker pull slyad/ns3-gym
+```
+
+# Docker file
 A docker file is included to setup the environment. 
 
 ## To build the image:
