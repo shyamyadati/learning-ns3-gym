@@ -18,7 +18,7 @@ docker build --tag ns3-gym:0.0 .
 # Run the image
 Once built run the image as by:
 ```
-docker run -v $(pwd):/usr/work --detach --name ns3gym ns3-gym:0.0
+docker run -v $(pwd):/usr/work -it --name ns3gym slyad/ns3-gym:0.0 /bin/bash
 ```
 
 # Interact with the running container 
