@@ -119,10 +119,11 @@ RUN ./waf build
 RUN python3 -m pip install ./src/opengym/model/ns3gym
 
 # -------------------------------------
-# install tensorflow 1.15 - needed for exmaples
+# install python requirements needed for examples
 RUN python3 -m pip install --upgrade \
     "setuptools>=41.0.0" \
-    "tensorflow==1.15"
+    "tensorflow==1.15" \
+    matplotlib
 
 # =============================================================================
 # Clean up
