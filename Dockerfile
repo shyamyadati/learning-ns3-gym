@@ -1,4 +1,4 @@
-FROM ubuntu:20.04
+FROM ubuntu:18.04
 MAINTAINER Shyam Yadati <shyam@yadaticonsulting.com>
 LABEL Description="Docker image for ns3-gym"
 
@@ -80,8 +80,8 @@ RUN apt-get install -y \
     vtun \
     lxc \
     uml-utilities \
-    libboost-signals1.67-dev \
-    libboost-filesystem1.67-dev \
+    libboost-signals-dev \
+    libboost-filesystem-dev \
     libgcrypt-dev \
     castxml \
     libdpdk-dev \
