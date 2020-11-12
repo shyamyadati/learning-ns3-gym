@@ -1,0 +1,14 @@
+FROM slyad/ns3-gym:0.0
+MAINTAINER Shyam Yadati <shyam@yadaticonsulting.com>
+LABEL Description="Docker file that adds ml framworks and python packages"
+
+# -------------------------------------
+# install python requirements needed for examples
+RUN python3 -m pip install --upgrade \
+    "setuptools>=41.0.0" \
+    "tensorflow==1.15" \
+    matplotlib
+
+# =============================================================================
+# Clean up
+WORKDIR /usr
