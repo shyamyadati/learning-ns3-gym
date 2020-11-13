@@ -160,7 +160,8 @@ sudo apt-get install -y \
     uml-utilities
 
 # Support for openflow module (requires some boost libraries)
-if [ "$release" = "Ubuntu 18.04.5 LTS" ]; then
+release=$(lsb_release -d | awk '{print $3}')
+if [ "$release" = "18.04.5" ]; then
     sudo apt-get install -y \
       libboost-signals-dev \
       libboost-filesystem-dev
@@ -181,7 +182,7 @@ sudo apt-get install -y \
 
 # -------------------------------------
 # install protobufs for ns3-gym
-sudo apt-install -y \
+sudo apt install -y \
     libprotobuf-dev \
     protobuf-compiler    
 
@@ -197,7 +198,10 @@ cd ${INSTALL_DIR}
 
 # -------------------------------------
 # fetch ns3-gym
-git clone https://github.com/tkn-tub/ns3-gym.git
+if [ ! -d ${INSTALL_DIR}/ns3-gym ]; then
+    git clone https://github.com/tkn-tub/ns3-gym.git
+fi
+    
 cd ./ns3-gym
 
 # head is broken - the following commit works
@@ -211,3 +215,17 @@ git checkout 470362bbf59fb871def89e0b3dc6deb51561baf2
 # -------------------------------------
 # install python package
 sudo -H python3 -m pip install ./src/opengym/model/ns3gym
+
+# -------------------------------------
+# install python requirements needed for examples
+sudo -H python3 -m pip install --upgrade \
+    "setuptools>=41.0.0" \
+    testresources \
+    "tensorflow==1.15" \
+    matplotlib
+
+# -------------------------------------
+# clean up
+cd $HOME
+# give the user ownership over the install directory
+sudo chown -R $USER:$USER ${INSTALL_DIR}
